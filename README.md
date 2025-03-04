@@ -5,7 +5,7 @@
 
 ## Overview
 
-This project classifies speech disorders using machine learning techniques. It extracts acoustic and linguistic features from speech recordings and applies various models, including Logistic Regression, K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Random Forest, and Deep Learning models (CNN, MLP).
+This project classifies speech disorders using machine learning techniques. It extracts acoustic and linguistic features from speech recordings and applies various models, including Logistic Regression, K-Nearest Neighbors (KNN), Support Vector Machines (SVM), Random Forest, and Deep Learning models (CNN, MLP). Original repository at https://github.com/ktolnos/als-project
 
 The dataset includes recordings labeled with neurological conditions such as ALS, MSA, PSP, PD, and healthy controls (HC).
 ## Objectives
