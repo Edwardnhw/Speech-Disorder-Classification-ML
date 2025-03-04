@@ -176,18 +176,18 @@ Explore waveform-based models using transformers (e.g., Whisper, Wav2Vec 2.0)
 
 ## Next Steps & Improvements
 
-- Extend analysis to other factors (e.g., programming language, country).
-- Implement Machine Learning models for salary prediction.
-- Automate data processing with Pandas & NumPy optimizations.
+- Fine-tune deep learning models using ResNet, LSTMs, and transformers.
+- Improve cross-dataset generalization with domain adaptation.
+- Integrate real-time inference for clinical applications.
 
 ---
 
 ## Acknowledgments
 Special thanks to:
 
-Dataset providers for sharing valuable speech recordings
-OpenAI Whisper & Torchaudio for speech processing tools
-Scikit-learn, TensorFlow, PyTorch for machine learning frameworks
+- Dataset providers for sharing valuable speech recordings
+- OpenAI Whisper & Torchaudio for speech processing tools
+- Scikit-learn, TensorFlow, PyTorch for machine learning frameworks
 
 
 ---
