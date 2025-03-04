@@ -31,9 +31,9 @@ Raw audio files (.wav format)
 Acoustic feature metadata (.csv format)
 Labeled speech disorder categories
 
-⚠ Note: Data Files Not Uploaded
-Due to GitHub file size limitations, raw audio files and large datasets have not been uploaded to this repository. Please download rge data from the original sources or contact us.
-
+Dataset Information
+This repository contains a cleaned version of the script used and results for speech disorder classification. Due to the large file size, raw datasets are not included in this repository.
+If you require the full dataset, please refer to the following repository maintained by my teammate: https://github.com/ktolnos/als-project
 
 ## Repository Structure
 ```bash
