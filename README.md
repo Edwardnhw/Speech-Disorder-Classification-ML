@@ -17,63 +17,54 @@ The dataset includes recordings labeled with neurological conditions such as ALS
 - Generate spectrograms for feature extraction and augmentation.
 - Implement MFCC, jitter, shimmer, intensity, and frequency analysis for feature engineering.
 
+## Dataset
+The dataset consists of multiple speech disorder datasets, including:
 
-## Methodology
+VOC-ALS Dataset
+MINSK Parkinson’s Dataset
+MSA Dataset
+PD Dataset 1, 2, 3
+Italian Parkinson’s Voice Dataset
+Each dataset contains:
 
-### 1. Exploratory Data Analysis (EDA)
-- Visualizing salary trends by **job mode** and **education level**.
-- Identifying distributions and potential outliers.
+Raw audio files (.wav format)
+Acoustic feature metadata (.csv format)
+Labeled speech disorder categories
 
-### 2. Hypothesis Testing
-- **Welch’s t-test**: Compare remote vs. in-person salaries.
-- **ANOVA**: Assess salary differences across education groups.
-- **Kolmogorov-Smirnov Test**: Check for normality.
-- **Levene’s Test**: Evaluate variance equality.
+⚠ Note: Data Files Not Uploaded
+Due to GitHub file size limitations, raw audio files and large datasets have not been uploaded to this repository. Please download rge data from the original sources or contact us.
 
-### 3. Bootstrapping for Robustness
-- Generate **10,000 resampled salary means**.
-- Compute **pairwise salary differences**.
-- Normalize mean differences using **Welch’s t-score**.
-
-### 4. Result Interpretation
-- Statistical significance of **job mode and education level** on salary.
-- Confidence in findings using **bootstrapped validation**.
-
-## Key Findings
-
-- **Remote vs. In-Person Salaries**:
-  - Significant salary differences identified using t-tests and bootstrapping.
-  - Bootstrapped results align with the original t-test conclusions.
-
-- **Education Level and Salary**:
-  - ANOVA shows statistical significance in salary differences.
-  - Higher education levels correlate with increased salary, but variability exists.
-
-## Data Source
-
-- **Stack Overflow Developer Survey 2024** (https://survey.stackoverflow.co/)
-- Contains salary, education level, work mode, and demographic information.
 
 ## Repository Structure
 ```bash
 
-Salary_Analysis_StackOverflow/
-│── data/
-│   │── sample_data.csv  # Reduced dataset
-│   │── .DS_Store        # System file (recommended to remove)
-│
-│── LICENSE              # License for the project
-│── reduce_size.ipynb    # Notebook for dataset size reduction
-│── salary_analysis.ipynb # Jupyter Notebook for analysis
-│── .DS_Store            # Duplicate system file (recommended to remove)
+speech-disorder-classification-ml/
+│── backup-repo/                        # Backup of previous repository
+│── doc/
+│   │── Final_Project_Report.pdf        # Final project report  
+│   │── Project_Proposal.pdf            # Initial proposal document  
+│  
+│── plots/                              # Model performance visualizations  
+│   │── Embeddings_acc_logistic.pdf     
+│   │── Embeddings_f1_mlp.png  
+│  
+│── results/                            # Trained model results and evaluations  
+│   │── CNN_results/                    
+│  
+│── src/                                # Main source code  
+│   │── feature_extraction/             # Feature extraction scripts  
+│   │   │── extract_acoustic_features.py
+│   │   │── generate_spectrograms.py    
+│   │── models/                         # Model training scripts  
+│   │   │── train_cnn.py                
+│   │   │── train_svm_randomforest.py  
+│   │── utils/                          # Utility functions  
+│  
+│── requirements.txt                    # Python dependencies  
+│── .gitignore                          # Ignored files  
+│── README.md                            # Project documentation  
 
 ```
-
-### Notes:
-- `.DS_Store` files are automatically created by macOS. It is recommended to **remove** them using:
-  ```sh
-  find . -name ".DS_Store" -delete
-
 
 ---
 
@@ -81,7 +72,9 @@ Salary_Analysis_StackOverflow/
 
 ### 1. Clone the Repository
 ```
-- git clone https://github.com/your-username/Salary_Analysis_StackOverflow.git cd Salary_Analysis_StackOverflow
+git clone https://github.com/Edwardnhw/speech-disorder-classification-ml.git
+cd speech-disorder-classification-ml
+
 ```
 
 ### 2. Install Dependencies
@@ -90,34 +83,94 @@ pip install -r requirements.txt
 
 ```
 
-### 3. Run the Analysis
+### 3. Add Missing Data Files
+Since raw datasets are not included in the repository, ensure that your data/ directory is properly structured:
 ```
-python salary_analysis.py
+data/
+│── raw/                               # Place original datasets here
+│── processed/                         # Preprocessed data will be stored here
+
 ```
+
+### 4. Run Feature Extraction
+To extract acoustic features from the dataset, run:
+```
+python src/feature_extraction/extract_acoustic_features.py
+
+```
+5. Train Machine Learning Models
+To train different models, use the following scripts:
+
+Train CNN Model
+```
+python src/models/train_cnn.py
+```
+Train Logistic Regression & KNN
+```
+python src/models/train_logisticRegression_KNN.py
+```
+Train SVM & Random Forest
+```
+python src/models/train_svm_randomforest.py
+```
+6. Evaluate Model Performance
+To analyze model results and generate reports:
+```
+python src/models/evaluate_models.py
+```
+---
+## Methodology
+1. Feature Extraction
+Extracted acoustic features include:
+
+- Fundamental Frequency (F0) – Mean, median, standard deviation
+- Jitter & Shimmer – Measures of voice perturbation
+- Intensity – Mean and standard deviation of speech loudness
+- MFCCs – Mel-frequency cepstral coefficients for voice characterization
+- Spectrogram Analysis – Visual representation of speech signal
+
+2. Data Preprocessing
+- Normalization and scaling of extracted features
+- Handling missing values through imputation
+- Train-test split using stratified sampling
+  
+3. Machine Learning Models
+Implemented models for classification include:
+- Logistic Regression
+- K-Nearest Neighbors (KNN)
+- Support Vector Machines (SVM)
+- Random Forest
+- Convolutional Neural Networks (CNNs)
+- Multi-Layer Perceptron (MLP)
+  
+5. Model Evaluation
+Evaluated using:
+- Accuracy, Precision, Recall, F1-score
+- Confusion Matrices
+- Bootstrapped Confidence Intervals
 
 
 ---
 
 ## Results Visualization
 
-This project includes multiple visualizations such as:
-- Salary trends by experience (Line plot).
-- Average salary by education level (Bar chart).
-- Job mode salary distributions (Histograms & KDE plots).
-- Outlier detection & removal using IQR.
-- Bootstrapped confidence intervals & statistical tests.
-
-Sample Output:
-- Bootstrapped t-test result: t-statistic: -2.35, p-value: 0.018
-- Conclusion: Remote workers earn significantly more than in-person workers.
-
+1. Model Performance on Speech Disorder Classification
+CNN & MLP models outperformed traditional ML classifiers on spectrogram-based features.
+Logistic Regression and SVM provided good interpretability but lower accuracy.
+Feature-based models (MFCC, jitter, shimmer) showed strong correlations with specific disorders.
+2. Visualization of Results
+Generated plots include:
+- Spectrogram visualizations of speech samples
+- Confusion matrices for different classifiers
+- Accuracy and F1-score heatmaps by vowel and disorder type
 
 ---
+## Future Improvements
+Expand dataset with more diverse speech recordings
+Implement Transfer Learning using pre-trained speech models
+Enhance data augmentation techniques for improved generalization
+Explore waveform-based models using transformers (e.g., Whisper, Wav2Vec 2.0)
 
-## Data Source
-
-- **Stack Overflow Developer Survey 2024**
-- Contains salary, education level, work mode, and demographic information.
 
 ---
 
@@ -129,13 +182,17 @@ Sample Output:
 
 ---
 
-## Notes
+## Acknowledgments
+Special thanks to:
 
-Remove `.DS_Store` files (macOS system files) before pushing to GitHub  
-
-```
-find . -name ".DS_Store" -delete
-```
+Dataset providers for sharing valuable speech recordings
+OpenAI Whisper & Torchaudio for speech processing tools
+Scikit-learn, TensorFlow, PyTorch for machine learning frameworks
 
 ---
+Final Note
+This repository does not include large datasets or raw audio files due to GitHub storage constraints. Please download the data separately and place it in the data/raw/ directory before running the scripts.
+---
+
+
 
