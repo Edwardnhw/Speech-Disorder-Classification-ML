@@ -166,11 +166,10 @@ Generated plots include:
 
 ---
 ## Future Improvements
-Expand dataset with more diverse speech recordings
-Implement Transfer Learning using pre-trained speech models
-Enhance data augmentation techniques for improved generalization
-Explore waveform-based models using transformers (e.g., Whisper, Wav2Vec 2.0)
-
+- Expand dataset with more diverse speech recordings
+- Implement Transfer Learning using pre-trained speech models
+- Enhance data augmentation techniques for improved generalization
+- Explore waveform-based models using transformers (e.g., Whisper, Wav2Vec 2.0)
 
 ---
 
