@@ -1,6 +1,6 @@
 # Speech Disorder Classification Using Machine Learning
 
-**Author**: Hon Wa Ng, @ktolnos, @electronjia, @Fletcher-FJY
+**Author**: Hon Wa Ng, @ktolnos, @electronjia, @Fletcher-FJY\
 **Date**: December 2024  
 
 ## Overview
